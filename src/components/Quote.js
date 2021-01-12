@@ -1,32 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
+import React from 'react';
 
-export default function Quote() {
-  const [quote, setQuote] = useState({});
-
-  // make get quote request to Quotable API
-  function fetchQuote() {
-    let url = "https://api.quotable.io/random";
-
-    axios.get(url)
-      .then(result => {
-        console.log(result.data);
-        setQuote(result.data);
-      })
-      .catch(error => {
-        console.error(error);
-      })
-  }
-
-  useEffect(() => {
-    fetchQuote();
-  }, []);
-
+export default function Quote({ author, content }) {
 
   return (
     <div>
-      <p>{quote.author}</p>
-      <p>{quote.content}</p>
+      <p>{author}</p>
+      <p>{content}</p>
     </div>
   )
 }
