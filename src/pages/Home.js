@@ -15,7 +15,7 @@ export default function Home() {
 
   // make get quote request to Quotable API
   function fetchQuote() {
-    let url = "https://api.quotable.io/random";
+    let url = "https://api.quotable.io/random?maxLength=80&tags=famous-quotes";
 
     axios.get(url)
       .then(result => {
@@ -26,19 +26,24 @@ export default function Home() {
       })
   }
 
-
   return (
     <div className="home">
       <div className="home-header">
         <h1>Quote Graphic</h1>
-        <p>Design your own blah blah blah blah blah blah</p>
+        <p>Create and share beautiful quotes in minutes.</p>
+        <p>Fully customizable quote. Start by changing color, style, and size!</p>
       </div>
       <div className="home-content">
         <Palette fetchQuote={fetchQuote} />
         <Quote author={quote.author} content={quote.content} />
       </div>
       <div className="home-footer">
-        <p>Github</p>
+        <div className="home-footer-links">
+          <a href="/about">about</a>
+          <a href="https://github.com/yubinary/quote-graphic">github</a>
+          <a href="https://github.com/yubinary/quote-graphic/issues/new">feedback</a>
+        </div>
+        <p>© Copyright Yubin Heo. All Rights Reserved.</p>
       </div>
     </div>
   )

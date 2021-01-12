@@ -11,12 +11,14 @@ html{
 }
 
 .home{
-  margin: 50px auto;
+  margin: 70px auto;
   width: 700px;
 }
 
 .home-header, .home-footer{
   text-align: center;
+  margin: 50px;
+  color: rgb(112, 96, 96);
 }
 
 .home-content{
@@ -27,8 +29,28 @@ html{
 }
 
 .home-header h1{
-  margin: 0px;
+  margin: 5px 0px;
   font-size: 60px;
-  color: rgb(99, 83, 83);
   font-weight: 700;
+  /* text-shadow: -1px -1px 0 rgb(161, 159, 159), 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
+}
+
+.home-header p{
+  margin: 0px;
+  font-size: 18px;
+}
+
+.home-footer-links{
+  display: flex;
+  width: 500px;
+  margin: 0px auto;
+}
+
+.home-footer-links a{
+  margin: 0px auto;
+  text-decoration: underline;
+}
+
+.home-footer-links a:link, .home-footer-links a:visited {
+  color: rgb(112, 96, 96);
 }

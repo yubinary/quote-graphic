@@ -6,8 +6,10 @@ export default function Quote({ author, content }) {
 
   return (
     <div className="quote">
-      <p>{author}</p>
-      <p>{content}</p>
+      <div className="quote-text">
+        <h1>{content}</h1>
+        <p>{author}</p>
+      </div>
     </div>
   )
 }

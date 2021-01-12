@@ -5,7 +5,7 @@ import '../styles/Palette.css';
 
 export default function Palette({ fetchQuote }) {
   const [fontStyle, setFontStyle] = useState("");
-  const [fontSize, setFontSize] = useState(15);
+  const [fontSize, setFontSize] = useState(30);
   const [fontColor, setFontColor] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("");
   const [isDisplay, setIsDisplay] = useState(false);
@@ -22,12 +22,16 @@ export default function Palette({ fetchQuote }) {
 
   // decrease font size when clicked
   function handleClickDecrement() {
-    setFontSize(fontSize - 1);
+    if (fontSize > 20) {
+      setFontSize(fontSize - 1);
+    }
   };
 
   // increase font size when clicked
   function handleClickIncrement() {
-    setFontSize(fontSize + 1);
+    if (fontSize < 40) {
+      setFontSize(fontSize + 1);
+    }
   };
 
   // handle background color change
