@@ -4,6 +4,8 @@ import axios from "axios";
 import Palette from "../components/Palette.js";
 import Quote from "../components/Quote.js";
 
+import '../styles/Home.css';
+
 export default function Home() {
   const [quote, setQuote] = useState({});
 
@@ -26,9 +28,18 @@ export default function Home() {
 
 
   return (
-    <div>
-      <Palette fetchQuote={fetchQuote} />
-      <Quote author={quote.author} content={quote.content} />
+    <div className="home">
+      <div className="home-header">
+        <h1>Quote Graphic</h1>
+        <p>Design your own blah blah blah blah blah blah</p>
+      </div>
+      <div className="home-content">
+        <Palette fetchQuote={fetchQuote} />
+        <Quote author={quote.author} content={quote.content} />
+      </div>
+      <div className="home-footer">
+        <p>Github</p>
+      </div>
     </div>
   )
 }

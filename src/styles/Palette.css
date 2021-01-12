@@ -1,0 +1,9 @@
+.palette{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.palette-font-size{
+  display: flex;
+}
