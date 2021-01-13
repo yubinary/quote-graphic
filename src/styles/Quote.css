@@ -15,10 +15,13 @@
 }
 
 .quote-text h1{
-  margin: 0px 0px 40px 0px;
+  display: inline;
+  padding: 0px 8px;
 }
 
 .quote-text p{
+  display: inline-block;
+  padding: 0px 8px;
   font-size: 13px;
-  margin: 0px;
+  margin: 40px 0px 0px 0px;
 }

@@ -7,6 +7,7 @@ import '../styles/Home.css';
 
 export default function Home() {
   const [quote, setQuote] = useState({});
+  const [image, setImage] = useState({});
 
   useEffect(() => {
     fetchQuote();
@@ -35,8 +36,7 @@ export default function Home() {
       <div className="home-content">
         <Palette
           fetchQuote={fetchQuote}
-          author={quote.author}
-          content={quote.content}
+          quote={quote}
         />
       </div>
       <div className="home-footer">
