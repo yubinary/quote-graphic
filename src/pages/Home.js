@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 import Palette from "../components/Palette.js";
-import Quote from "../components/Quote.js";
 
 import '../styles/Home.css';
 
@@ -34,8 +33,11 @@ export default function Home() {
         <p>Fully customizable quote. Start by changing color, style, and size!</p>
       </div>
       <div className="home-content">
-        <Palette fetchQuote={fetchQuote} />
-        <Quote author={quote.author} content={quote.content} />
+        <Palette
+          fetchQuote={fetchQuote}
+          author={quote.author}
+          content={quote.content}
+        />
       </div>
       <div className="home-footer">
         <div className="home-footer-links">

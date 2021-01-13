@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+.palette div, .palette select{
+  margin-right: auto;
 }
 
 .palette-font-size{

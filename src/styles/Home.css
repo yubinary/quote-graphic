@@ -3,7 +3,6 @@
 /* general */
 * {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 html{
@@ -19,6 +18,7 @@ html{
   text-align: center;
   margin: 50px;
   color: rgb(112, 96, 96);
+  font-family: "Poppins", sans-serif;
 }
 
 .home-content{
@@ -53,4 +53,8 @@ html{
 
 .home-footer-links a:link, .home-footer-links a:visited {
   color: rgb(112, 96, 96);
+}
+
+.home-footer-links a:hover{
+  text-decoration: none;
 }

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { ChromePicker } from 'react-color';
+import Quote from "./Quote.js";
 
 import '../styles/Palette.css';
 
-export default function Palette({ fetchQuote }) {
-  const [fontStyle, setFontStyle] = useState("");
-  const [fontSize, setFontSize] = useState(30);
+export default function Palette({ fetchQuote, author, content }) {
+  const [fontStyle, setFontStyle] = useState("Poppins");
+  const [fontSize, setFontSize] = useState(15);
   const [fontColor, setFontColor] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("");
   const [isDisplay, setIsDisplay] = useState(false);
@@ -22,14 +23,14 @@ export default function Palette({ fetchQuote }) {
 
   // decrease font size when clicked
   function handleClickDecrement() {
-    if (fontSize > 20) {
+    if (fontSize > 10) {
       setFontSize(fontSize - 1);
     }
   };
 
   // increase font size when clicked
   function handleClickIncrement() {
-    if (fontSize < 40) {
+    if (fontSize < 20) {
       setFontSize(fontSize + 1);
     }
   };
@@ -57,29 +58,41 @@ export default function Palette({ fetchQuote }) {
   }
 
   return (
-    <div className="palette">
-      <select onChange={handleChangeFontStyle}>
-        <option value="monospace">Monospace</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Gill Sans">Gill Sans</option>
-        <option value="sans-serif">Sans-serif</option>
-      </select>
-      <div className="palette-font-size">
-        <button onClick={handleClickDecrement}>-</button>
-        <p>{fontSize}</p>
-        <button onClick={handleClickIncrement}>+</button>
-      </div>
-      <div>
-        <button onClick={handleClickDisplay}>Change Color</button>
-        {displayColorPicker()}
-      </div>
-      <div>
-        <select onChange={handleChangeFontColor}>
-          <option value="black">Black</option>
-          <option value="white">White</option>
+    <div>
+      <div className="palette">
+        <select onChange={handleChangeFontStyle}>
+          <option value="Poppins, sans-serif">Poppins</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="Courier, monospace">Courier</option>
+          <option value="Comic Sans MS, Comic Sans, cursive">Comic Sans</option>
+          <option value="Didot, serif">Didot, serif</option>
+          <option value="Arial Narrow, sans-serif">Arial Narrow</option>
         </select>
+        <div className="palette-font-size">
+          <button onClick={handleClickDecrement}>-</button>
+          <p>{fontSize}</p>
+          <button onClick={handleClickIncrement}>+</button>
+        </div>
+        <div>
+          <button onClick={handleClickDisplay}>Change Color</button>
+          {displayColorPicker()}
+        </div>
+        <div>
+          <select onChange={handleChangeFontColor}>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+          </select>
+        </div>
+        <button onClick={fetchQuote}>New</button>
       </div>
-      <button onClick={fetchQuote}>New</button>
+      <Quote
+        author={author}
+        content={content}
+        fontStyle={fontStyle}
+        fontSize={fontSize}
+        fontColor={fontColor}
+        backgroundColor={backgroundColor}
+      />
     </div>
   )
 }
