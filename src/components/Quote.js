@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import '../styles/Quote.css';
 
-export default function Quote({ quote, fontStyle, fontSize, fontColor, backgroundColor, isHighlight, image }) {
+export default function Quote({ quote, fontStyle, fontSize, fontColor, backgroundColor, isHighlight, imageUrl }) {
 
   // helper function that cleans color code for style
   function makeRgb(color) {
@@ -18,7 +18,7 @@ export default function Quote({ quote, fontStyle, fontSize, fontColor, backgroun
 
   var quoteStyle = {
     backgroundColor: makeRgb(backgroundColor),
-    backgroundImage: "url(" + image + ")",
+    backgroundImage: "url(" + imageUrl + ")",
     backgroundSize: "cover"
   }
 

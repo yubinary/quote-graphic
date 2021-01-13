@@ -12,3 +12,7 @@
 .palette-font-size{
   display: flex;
 }
+
+.preview-image{
+  width: 200px;
+}

@@ -12,17 +12,26 @@ export default function Palette({ fetchQuote, quote }) {
   const [backgroundColor, setBackgroundColor] = useState("");
   const [isDisplay, setIsDisplay] = useState(false);
   const [isHighlight, setIsHighlight] = useState(false);
-  const [image, setImage] = useState("");
+  const [isImage, setIsImage] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [nthImage, setNthImage] = useState(0);
 
-  // handle font style change
-  function handleChangeFontStyle(event) {
-    setFontStyle(event.target.value);
-  };
-
-  // handle font color change
-  function handleChangeFontColor(event) {
-    setFontColor(event.target.value);
-  }
+  const imgArray = [
+    "57e5d447485baa14f6da8c7dda7936771637dde454596c48732e7bd19249c250b9_1280.jpg",
+    "57e1d5434857a814f6da8c7dda7936771637dde454596c48732e7bd19249c25eb9_1280.jpg",
+    "54e2d04b4c5aad14f6da8c7dda7936771637dde454596c48732e7bd19249c25ab9_1280.jpg",
+    "5ee2dc434a51b108f5d0846096293e7d1d3cdfe25b4c704f742f7ed1934bcd5e_1280.jpg",
+    "57e2dd414953a814f6da8c7dda7936771637dde454596c48732e7bd19249c350be_1280.jpg",
+    "55e1d6464255a914f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
+    "54e0d5464a54aa14f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
+    "54e6d4444b53ae14f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
+    "57e1dc444d57af14f6da8c7dda7936771637dde454596c48732e7bd19249c35bb8_1280.jpg",
+    "57e3d2404b55ad14f6da8c7dda7936771637dde454596c48732e7bd19249c358be_1280.jpg",
+    "55e1d3464f55b108f5d0846096293e7d1d3cdfe25b4c704f742f7ed19348c759_1280.jpg",
+    "54e8d1454857ad14f6da8c7dda7936771637dde454596c48732e7bd19249c05ab9_1280.jpg",
+    "52e7d5434f53a814f6da8c7dda7936771637dde454596c48732e7bd19249c158bf_1280.jpg",
+    "54e0d5474e5aaf14f6da8c7dda7936771637dde454596c48732e7bd19249c158bf_1280.jpg"
+  ];
 
   // decrease font size when clicked
   function handleClickDecrement() {
@@ -38,25 +47,20 @@ export default function Palette({ fetchQuote, quote }) {
     }
   };
 
-  // handle background color change
-  function handleChangeBackgroundColor(color) {
-    setBackgroundColor(color.rgb);
+  // increase image order when clicked
+  function handleClickImage() {
+    if (nthImage === imgArray.length - 1) {
+      setNthImage(0);
+    } else {
+      setNthImage(nthImage + 1);
+    }
   };
 
-  // handle isDisplay when clicked
-  function handleClickDisplay() {
-    setIsDisplay(!isDisplay);
-  }
-
-  // handle isDisplay when clicked
-  function handleClickHighlight() {
-    setIsHighlight(!isHighlight);
-  }
-
-  // handle image url change
-  function handleChangeImage(event) {
-    setImage(event.target.value);
-  }
+  // increase image order when clicked
+  function handleChangeColor(color) {
+    setBackgroundColor(color.rgb);
+    setImageUrl("");
+  };
 
   // display color picker when isDisplay is true
   function displayColorPicker() {
@@ -64,8 +68,24 @@ export default function Palette({ fetchQuote, quote }) {
       return (
         <ChromePicker
           color={backgroundColor}
-          onChange={handleChangeBackgroundColor}
+          onChange={handleChangeColor}
         />
+      )
+    }
+  }
+
+  // display random images when isImage is true
+  function displayRandomImages() {
+    const repeatedUrl = "https://pixabay.com/get/";
+    let currImage = repeatedUrl + imgArray[nthImage];
+
+    if (isImage) {
+      return (
+        <div>
+          <img src={currImage} className="preview-image" />
+          <button onClick={() => setImageUrl(currImage)}>Use Image</button>
+          <button onClick={handleClickImage}>Try Another</button>
+        </div>
       )
     }
   }
@@ -73,7 +93,7 @@ export default function Palette({ fetchQuote, quote }) {
   return (
     <div>
       <div className="palette">
-        <select onChange={handleChangeFontStyle}>
+        <select onChange={(event) => setFontStyle(event.target.value)}>
           <option value="Poppins, sans-serif">Poppins</option>
           <option value="Georgia, serif">Georgia</option>
           <option value="Courier, monospace">Courier</option>
@@ -87,24 +107,20 @@ export default function Palette({ fetchQuote, quote }) {
           <button onClick={handleClickIncrement}>+</button>
         </div>
         <div>
-          <button onClick={handleClickDisplay}>Change Color</button>
-          {displayColorPicker()}
-        </div>
-        <div>
-          <select onChange={handleChangeFontColor}>
+          <select onChange={(event) => setFontColor(event.target.value)}>
             <option value="black">Black</option>
             <option value="white">White</option>
           </select>
         </div>
-        <select onChange={handleChangeImage}>
-          <option value="">None</option>
-          <option value="https://pixabay.com/get/54e0d5474e5aaf14f6da8c7dda7936771637dde454596c48732e7bd19249c158bf_1280.jpg">Plant</option>
-          <option value="Courier, monospace">Courier</option>
-          <option value="Comic Sans MS, Comic Sans, cursive">Comic Sans</option>
-          <option value="Times, Times New Roman, serif">Times</option>
-          <option value="Arial Narrow, sans-serif">Arial Narrow</option>
-        </select>
-        <button onClick={handleClickHighlight}>Highlight</button>
+        <div>
+          <button onClick={() => setIsDisplay(!isDisplay)}>Change Color</button>
+          {displayColorPicker()}
+        </div>
+        <div>
+          <button onClick={() => setIsImage(!isImage)}>Background Image</button>
+          {displayRandomImages()}
+        </div>
+        <button onClick={() => setIsHighlight(!isHighlight)}>Highlight</button>
         <button onClick={fetchQuote}>New Quote</button>
       </div>
       <Quote
@@ -114,7 +130,7 @@ export default function Palette({ fetchQuote, quote }) {
         fontColor={fontColor}
         backgroundColor={backgroundColor}
         isHighlight={isHighlight}
-        image={image}
+        imageUrl={imageUrl}
       />
     </div>
   )
