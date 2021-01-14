@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChromePicker } from 'react-color';
 import { BiHighlight, BiMinus, BiPlus } from 'react-icons/bi';
+import { FiAlignLeft, FiAlignCenter, FiAlignRight } from 'react-icons/fi';
 
 import transparent from "./transparent.jpg";
 import Quote from "./Quote.js";
@@ -17,6 +18,7 @@ export default function Palette({ fetchQuote, quote }) {
   const [isImage, setIsImage] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [nthImage, setNthImage] = useState(0);
+  const [textAlign, setTextAlign] = useState("center");
 
   const imgArray = [
     "55e1d3464f55b108f5d0846096293e7d1d3cdfe25b4c704f742f7ed19348c759_1280.jpg",
@@ -78,6 +80,17 @@ export default function Palette({ fetchQuote, quote }) {
     }
   }
 
+  // increase image order when clicked
+  function handleClickTextAlign() {
+    if (textAlign === "center") {
+      setTextAlign("right");
+    } else if (textAlign === "right") {
+      setTextAlign("left");
+    } else {
+      setTextAlign("center");
+    }
+  };
+
   // display random images when isImage is true
   function displayRandomImages() {
     const repeatedUrl = "https://pixabay.com/get/";
@@ -94,6 +107,23 @@ export default function Palette({ fetchQuote, quote }) {
     }
   }
 
+  // display text align icon
+  function displayTextAlignIcon() {
+    if (textAlign === "center") {
+      return (
+        <FiAlignCenter />
+      )
+    } else if (textAlign === "left") {
+      return (
+        <FiAlignLeft />
+      )
+    } else {
+      return (
+        <FiAlignRight />
+      )
+    }
+  }
+
   if (imageUrl === "") {
     var backgroundImageButtonStyle = {
       backgroundImage: "url(" + transparent + ")"
@@ -104,7 +134,6 @@ export default function Palette({ fetchQuote, quote }) {
       backgroundSize: "cover"
     }
   }
-
 
   return (
     <div>
@@ -147,6 +176,11 @@ export default function Palette({ fetchQuote, quote }) {
           <BiHighlight />
         </button>
         <button
+          className="palette-highlight"
+          onClick={handleClickTextAlign}>
+          {displayTextAlignIcon()}
+        </button>
+        <button
           className="palette-new-quote"
           onClick={fetchQuote}>New Quote</button>
       </div>
@@ -158,6 +192,7 @@ export default function Palette({ fetchQuote, quote }) {
         backgroundColor={backgroundColor}
         isHighlight={isHighlight}
         imageUrl={imageUrl}
+        textAlign={textAlign}
       />
     </div>
   )

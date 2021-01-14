@@ -1,7 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import '../styles/Quote.css';
 
-export default function Quote({ quote, fontStyle, fontSize, fontColor, backgroundColor, isHighlight, imageUrl }) {
+export default function Quote({
+  quote,
+  fontStyle,
+  fontSize,
+  fontColor,
+  backgroundColor,
+  isHighlight,
+  imageUrl,
+  textAlign }) {
 
   // helper function that cleans color code for style
   function makeRgb(color) {
@@ -26,6 +34,7 @@ export default function Quote({ quote, fontStyle, fontSize, fontColor, backgroun
     fontFamily: fontStyle,
     fontSize: fontSize + 'px',
     color: fontColor,
+    textAlign: textAlign
     // textShadow: "0px 2px 2px rgba(255, 255, 255, 0.4)"
   };
 
