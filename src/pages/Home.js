@@ -15,7 +15,7 @@ export default function Home() {
 
   // make get quote request to Quotable API
   function fetchQuote() {
-    let url = "https://api.quotable.io/random?maxLength=80&tags=famous-quotes";
+    let url = "https://api.quotable.io/random?maxLength=90&tags=famous-quotes";
 
     axios.get(url)
       .then(result => {
@@ -41,7 +41,6 @@ export default function Home() {
       </div>
       <div className="home-footer">
         <div className="home-footer-links">
-          <a href="/about">about</a>
           <a href="https://github.com/yubinary/quote-graphic">github</a>
           <a href="https://github.com/yubinary/quote-graphic/issues/new">feedback</a>
         </div>

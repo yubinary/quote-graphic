@@ -65,8 +65,44 @@ button{
   color: rgb(112, 96, 96);
 }
 
-.preview-image{
+.color-modal{
+  position: absolute;
+}
+
+.image-modal{
+  position: absolute;
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 1px 10px 1px #808080;
+}
+
+.image-button{
+  padding: 5px;
+}
+
+.image-button .use{
+  margin-right: 5px;
+  background-color: rgb(224, 224, 224);
+}
+
+.image-button button{
+  border: 1px solid rgb(112, 96, 96);
+  border-radius: 0px;
+  outline: 0px;
+  width: 48.6%;
+  height: 25px;
+  background-color: white;
+}
+
+.image-preview{
   width: 200px;
+  height: 100px;
+  object-fit: cover;
+  object-position: 50% 0%;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .palette-highlight{

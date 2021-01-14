@@ -9,20 +9,8 @@ export default function Quote({
   backgroundColor,
   isHighlight,
   imageUrl,
-  textAlign }) {
-
-  // helper function that cleans color code for style
-  function makeRgb(color) {
-    let rgb = "rgb(";
-    for (var key in color) {
-      if (key !== "a") {
-        rgb += color[key] + ",";
-      } else {
-        rgb += color[key];
-      }
-    }
-    return rgb + ")";
-  }
+  textAlign,
+  makeRgb }) {
 
   var quoteStyle = {
     backgroundColor: makeRgb(backgroundColor),

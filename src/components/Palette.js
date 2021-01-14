@@ -21,21 +21,26 @@ export default function Palette({ fetchQuote, quote }) {
   const [textAlign, setTextAlign] = useState("center");
 
   const imgArray = [
-    "55e1d3464f55b108f5d0846096293e7d1d3cdfe25b4c704f742f7ed19348c759_1280.jpg",
+    "57e8d344485aa914f6da8c7dda7936771637dde454596c48732e7bd19e4ec358b1_1280.jpg",
+    "57e8d34a435aa514f6da8c7dda7936771637dde454596c48732e7bd19e4ec05ab1_1280.jpg",
+    "55e1dd444e51b108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9449cd5c_1280.jpg",
+    "5ee3dc414a5ab108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9449c150_1280.jpg",
+    "52e1d142435bb108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9445c05d_1280.jpg",
+    "57e2d1464253ab14f6da8c7dda7936771637dde454596c48732e7bd19e4ec15bb1_1280.jpg",
+    "55e6d5464f56ab14f6da8c7dda7936771637dde454596c48732e7bd19e4ec358b1_1280.jpg",
+    "51e3d4414b51b108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9449c651_1280.jpg",
+    "55e2d5454f51ac14f6da8c7dda7936771637dde454596c48732e7bd19e4ec65fba_1280.jpg",
     "57e1dc444d57af14f6da8c7dda7936771637dde454596c48732e7bd19249c35bb8_1280.jpg",
-    "55e1d6464255a914f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
-    "57e2dd414953a814f6da8c7dda7936771637dde454596c48732e7bd19249c350be_1280.jpg",
     "57e1d5434857a814f6da8c7dda7936771637dde454596c48732e7bd19249c25eb9_1280.jpg",
     "57e5d447485baa14f6da8c7dda7936771637dde454596c48732e7bd19249c250b9_1280.jpg",
     "54e2d04b4c5aad14f6da8c7dda7936771637dde454596c48732e7bd19249c25ab9_1280.jpg",
     "5ee2dc434a51b108f5d0846096293e7d1d3cdfe25b4c704f742f7ed1934bcd5e_1280.jpg",
-    "57e2dd414953a814f6da8c7dda7936771637dde454596c48732e7bd19249c350be_1280.jpg",
-    "55e1d6464255a914f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
     "54e0d5464a54aa14f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
     "54e6d4444b53ae14f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
+    "52e6d7424951a814f6da8c7dda7936771637dde454596c48732e7bd19e4ecc51b0_1280.jpg",
     "57e3d2404b55ad14f6da8c7dda7936771637dde454596c48732e7bd19249c358be_1280.jpg",
     "54e8d1454857ad14f6da8c7dda7936771637dde454596c48732e7bd19249c05ab9_1280.jpg",
-    "52e7d5434f53a814f6da8c7dda7936771637dde454596c48732e7bd19249c158bf_1280.jpg",
+    "5ee4d4474e53b108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9444c45d_1280.jpg",
     "54e0d5474e5aaf14f6da8c7dda7936771637dde454596c48732e7bd19249c158bf_1280.jpg"
   ];
 
@@ -75,6 +80,7 @@ export default function Palette({ fetchQuote, quote }) {
         <ChromePicker
           color={backgroundColor}
           onChange={handleChangeColor}
+          className="color-modal"
         />
       )
     }
@@ -98,10 +104,12 @@ export default function Palette({ fetchQuote, quote }) {
 
     if (isImage) {
       return (
-        <div>
-          <img src={currImage} className="preview-image" />
-          <button onClick={() => setImageUrl(currImage)}>Use Image</button>
-          <button onClick={handleClickImage}>Try Another</button>
+        <div className="image-modal">
+          <img src={currImage} className="image-preview" />
+          <div className="image-button">
+            <button className="use" onClick={() => setImageUrl(currImage)}>Use Image</button>
+            <button onClick={handleClickImage}>Try Another</button>
+          </div>
         </div>
       )
     }
@@ -124,6 +132,19 @@ export default function Palette({ fetchQuote, quote }) {
     }
   }
 
+  // helper function that cleans color code for style
+  function makeRgb(color) {
+    let rgb = "rgb(";
+    for (var key in color) {
+      if (key !== "a") {
+        rgb += color[key] + ",";
+      } else {
+        rgb += color[key];
+      }
+    }
+    return rgb + ")";
+  }
+
   if (imageUrl === "") {
     var backgroundImageButtonStyle = {
       backgroundImage: "url(" + transparent + ")"
@@ -131,8 +152,12 @@ export default function Palette({ fetchQuote, quote }) {
   } else {
     var backgroundImageButtonStyle = {
       backgroundImage: "url(" + imageUrl + ")",
-      backgroundSize: "cover"
+      backgroundSize: "cover",
     }
+  }
+
+  var backgroundColorStyle = {
+    backgroundColor: makeRgb(backgroundColor)
   }
 
   return (
@@ -161,8 +186,11 @@ export default function Palette({ fetchQuote, quote }) {
           <p>{fontSize}px</p>
           <button onClick={handleClickIncrement}><BiPlus /></button>
         </div>
+
         <div className="palette-background-color">
-          <button onClick={() => setIsDisplay(!isDisplay)} />
+          <button
+            onClick={() => setIsDisplay(!isDisplay)}
+            style={backgroundColorStyle} />
           {displayColorPicker()}
         </div>
         <div className="palette-background-image">
@@ -193,6 +221,7 @@ export default function Palette({ fetchQuote, quote }) {
         isHighlight={isHighlight}
         imageUrl={imageUrl}
         textAlign={textAlign}
+        makeRgb={makeRgb}
       />
     </div>
   )

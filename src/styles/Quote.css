@@ -1,25 +1,24 @@
 .quote{
-  height: 350px;
+  width: 100%;
+  height: 400px;
   padding: 50px;
   background-color: rgb(178, 218, 211);
   box-shadow: 0px 0px 30px 1px #cfcfcf;
   text-align: center;
-  position: relative;
+  display: table;
 }
 
 .quote-text{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 700px;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.quote-text h1{
+.quote h1{
   display: inline;
   padding: 0px 8px;
 }
 
-.quote-text p{
+.quote p{
   display: inline-block;
   padding: 0px 8px;
   font-size: 15px;
