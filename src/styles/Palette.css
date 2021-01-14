@@ -1,18 +1,98 @@
 .palette{
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-family: "Poppins", sans-serif;
 }
 
-.palette div, .palette select{
+.palette-font-style, 
+.palette-font-color, 
+.palette-background-color, 
+.palette-highlight,
+.palette-font-size,
+.palette-background-image {
+  margin-right: 7px;
+}
+
+.palette-font-size {
   margin-right: auto;
+}
+
+.palette-font-style select, .palette-font-color select{
+  border: 1px solid rgb(112, 96, 96);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 30px 10px 15px;
+  outline: 0px;
+  appearance: none;
+  color: rgb(112, 96, 96);
+}
+
+.palette-font-color select{
+  padding: 10px 30px 10px 15px;
+}
+
+.select-arrow{
+  position: relative;
+  top: -22px;
+  right: -100px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: rgb(112, 96, 96) transparent transparent transparent;
+}
+
+.palette-font-color .select-arrow{
+  right: -60px;
 }
 
 .palette-font-size{
   display: flex;
 }
 
+button{
+  border: 1px solid rgb(112, 96, 96);
+  border-radius: 5px;
+  outline: 0px;
+  width: 37px;
+  height: 37px;
+  background-color: white;
+}
+
+.palette-background-color button, .palette-background-image button{
+  background-color: rgb(178, 218, 211);
+  color: rgb(112, 96, 96);
+}
+
 .preview-image{
   width: 200px;
+}
+
+.palette-highlight{
+  color: rgb(112, 96, 96);
+  font-size: 20px;
+  padding: 3px 1px 0px 0px;
+}
+
+.palette-new-quote{
+  color: rgb(112, 96, 96);
+  width: 90px;
+}
+
+.palette-font-size p{
+  color: rgb(112, 96, 96);
+  font-size: 13.333px;
+  padding: 0px 5px;
+  margin-top: 10px;
+  text-align: center;
+  width: 40px;
+}
+
+.palette-font-size button{
+  background-color: rgb(112, 96, 96);
+  color: white;
+  padding: 0px;
+  font-size: 15px;
+  width: 25px;
 }

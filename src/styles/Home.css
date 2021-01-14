@@ -21,6 +21,10 @@ html{
   font-family: "Poppins", sans-serif;
 }
 
+.home-footer{
+  margin-bottom: auto;
+}
+
 .home-content{
   border-radius: 25px;
   padding: 50px;
