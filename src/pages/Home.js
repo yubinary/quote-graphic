@@ -7,10 +7,11 @@ import '../styles/Home.css';
 
 export default function Home() {
   const [quote, setQuote] = useState({});
-  const [image, setImage] = useState({});
+  const [image, setImage] = useState([]);
 
   useEffect(() => {
     fetchQuote();
+    fetchImage();
   }, []);
 
   // make get quote request to Quotable API
@@ -20,6 +21,24 @@ export default function Home() {
     axios.get(url)
       .then(result => {
         setQuote(result.data);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
+
+  // make get image request to Pixabay API
+  function fetchImage() {
+    const API_KEY = "19383178-42909148a8b02e3e78ee4e9be";
+    let searchURL = "&q=wallpaper";
+    let orieURL = "&orientation=horizontal";
+    let url = "https://pixabay.com/api/?key=" + API_KEY + searchURL + orieURL;
+
+    axios.get(url)
+      .then(result => {
+        let imageArray = result.data.hits;
+        let imageUrlArray = imageArray.map(i => i.largeImageURL);
+        setImage(imageUrlArray);
       })
       .catch(error => {
         console.error(error);
@@ -37,6 +56,7 @@ export default function Home() {
         <Palette
           fetchQuote={fetchQuote}
           quote={quote}
+          image={image}
         />
       </div>
       <div className="home-footer">

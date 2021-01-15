@@ -8,7 +8,7 @@ import Quote from "./Quote.js";
 
 import '../styles/Palette.css';
 
-export default function Palette({ fetchQuote, quote }) {
+export default function Palette({ fetchQuote, quote, image }) {
   const [fontStyle, setFontStyle] = useState("Poppins");
   const [fontSize, setFontSize] = useState(15);
   const [fontColor, setFontColor] = useState("");
@@ -20,29 +20,6 @@ export default function Palette({ fetchQuote, quote }) {
   const [nthImage, setNthImage] = useState(0);
   const [textAlign, setTextAlign] = useState("center");
 
-  const imgArray = [
-    "57e8d344485aa914f6da8c7dda7936771637dde454596c48732e7bd19e4ec358b1_1280.jpg",
-    "57e8d34a435aa514f6da8c7dda7936771637dde454596c48732e7bd19e4ec05ab1_1280.jpg",
-    "55e1dd444e51b108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9449cd5c_1280.jpg",
-    "5ee3dc414a5ab108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9449c150_1280.jpg",
-    "52e1d142435bb108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9445c05d_1280.jpg",
-    "57e2d1464253ab14f6da8c7dda7936771637dde454596c48732e7bd19e4ec15bb1_1280.jpg",
-    "55e6d5464f56ab14f6da8c7dda7936771637dde454596c48732e7bd19e4ec358b1_1280.jpg",
-    "51e3d4414b51b108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9449c651_1280.jpg",
-    "55e2d5454f51ac14f6da8c7dda7936771637dde454596c48732e7bd19e4ec65fba_1280.jpg",
-    "57e1dc444d57af14f6da8c7dda7936771637dde454596c48732e7bd19249c35bb8_1280.jpg",
-    "57e1d5434857a814f6da8c7dda7936771637dde454596c48732e7bd19249c25eb9_1280.jpg",
-    "57e5d447485baa14f6da8c7dda7936771637dde454596c48732e7bd19249c250b9_1280.jpg",
-    "54e2d04b4c5aad14f6da8c7dda7936771637dde454596c48732e7bd19249c25ab9_1280.jpg",
-    "5ee2dc434a51b108f5d0846096293e7d1d3cdfe25b4c704f742f7ed1934bcd5e_1280.jpg",
-    "54e0d5464a54aa14f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
-    "54e6d4444b53ae14f6da8c7dda7936771637dde454596c48732e7bd19249c35cbd_1280.jpg",
-    "52e6d7424951a814f6da8c7dda7936771637dde454596c48732e7bd19e4ecc51b0_1280.jpg",
-    "57e3d2404b55ad14f6da8c7dda7936771637dde454596c48732e7bd19249c358be_1280.jpg",
-    "54e8d1454857ad14f6da8c7dda7936771637dde454596c48732e7bd19249c05ab9_1280.jpg",
-    "5ee4d4474e53b108f5d0846096293e7d1d3cdfe25b4c704f742f7edd9444c45d_1280.jpg",
-    "54e0d5474e5aaf14f6da8c7dda7936771637dde454596c48732e7bd19249c158bf_1280.jpg"
-  ];
 
   // decrease font size when clicked
   function handleClickDecrement() {
@@ -60,7 +37,7 @@ export default function Palette({ fetchQuote, quote }) {
 
   // increase image order when clicked
   function handleClickImage() {
-    if (nthImage === imgArray.length - 1) {
+    if (nthImage === image.length - 1) {
       setNthImage(0);
     } else {
       setNthImage(nthImage + 1);
@@ -99,8 +76,7 @@ export default function Palette({ fetchQuote, quote }) {
 
   // display random images when isImage is true
   function displayRandomImages() {
-    const repeatedUrl = "https://pixabay.com/get/";
-    let currImage = repeatedUrl + imgArray[nthImage];
+    let currImage = image[nthImage];
 
     if (isImage) {
       return (
@@ -204,7 +180,7 @@ export default function Palette({ fetchQuote, quote }) {
           <BiHighlight />
         </button>
         <button
-          className="palette-highlight"
+          className="palette-text-align"
           onClick={handleClickTextAlign}>
           {displayTextAlignIcon()}
         </button>

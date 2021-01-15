@@ -10,7 +10,8 @@
 .palette-background-color, 
 .palette-highlight,
 .palette-font-size,
-.palette-background-image {
+.palette-background-image,
+.palette-text-align {
   margin-right: 7px;
 }
 
@@ -105,10 +106,10 @@ button{
   border-top-right-radius: 2px;
 }
 
-.palette-highlight{
+.palette-highlight, .palette-text-align{
   color: rgb(112, 96, 96);
   font-size: 20px;
-  padding: 3px 1px 0px 0px;
+  padding: 5px 1px 0px 0px;
 }
 
 .palette-new-quote{
