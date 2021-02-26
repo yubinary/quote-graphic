@@ -1,7 +1,7 @@
 # [quote-graphic](https://yubin-quotegraphic.herokuapp.com/)
 
-[![Build Status](https://travis-ci.org/travis-ci/docs-travis-ci-com.svg?branch=master)](https://travis-ci.org/yubinary/quote-graphic)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yubinary/quote-graphic)
+<!--[![Build Status](https://travis-ci.org/travis-ci/docs-travis-ci-com.svg?branch=master)](https://travis-ci.org/yubinary/quote-graphic)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yubinary/quote-graphic)-->
 
 
 A [quote making tool](https://yubin-quotegraphic.herokuapp.com/) that lets you create beautiful image with nice looking typography easily and fast. 
